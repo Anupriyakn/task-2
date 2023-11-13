@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .login-container {
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+        }
+        .chat-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            display: none;
+        }
+        input[type="text"], input[type="password"], button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <input type="text" placeholder="Username" id="username">
+        <input type="password" placeholder="Password" id="password">
+        <button onclick="login()">Login</button>
+    </div>
+
+    <div class="chat-container">
+        <h2>Welcome, <span id="user"></span>!</h2>
+        <div id="chat-box">
+            <!-- Chat messages will be displayed here -->
+        </div>
+        <input type="text" placeholder="Type your message..." id="message">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+        function login() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            // You would typically perform server-side authentication here.
+            // If authentication is successful, you can show the chat interface.
+
+            document.querySelector(".login-container").style.display = "none";
+            document.querySelector(".chat-container").style.display = "block";
+            document.getElementById("user").innerText = username;
+        }
+
+        function sendMessage() {
+            var message = document.getElementById("message").value;
+            var chatBox = document.getElementById("chat-box");
+            var username = document.getElementById("user").innerText;
+
+            // You would typically send the message to the server and receive responses here.
+            // For a real chat application, you'll need a backend server and client-side JavaScript.
+
+            chatBox.innerHTML += `<p><strong>${username}:</strong> ${message}</p>`;
+            document.getElementById("message").value = "";
+        }
+    </script>
+</body>
+</html>
